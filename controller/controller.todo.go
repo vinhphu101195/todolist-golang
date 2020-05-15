@@ -40,7 +40,7 @@ func FetchAllTodo(c *gin.Context) {
 		} else {
 			completed = false
 		}
-		_todos = append(_todos, models.TransformedTodo{ID: item.ID, Title: item.Title, Completed: completed})
+		_todos = append(_todos, models.TransformedTodo{ID: item.ID, Title: item.Title, Completed: completed, Userid: item.Userid})
 	}
 	c.JSON(http.StatusOK, gin.H{"status": http.StatusOK, "data": _todos})
 }
@@ -62,7 +62,7 @@ func FetchSingleTodo(c *gin.Context) {
 	} else {
 		completed = false
 	}
-	_todo := models.TransformedTodo{ID: todo.ID, Title: todo.Title, Completed: completed}
+	_todo := models.TransformedTodo{ID: todo.ID, Title: todo.Title, Completed: completed, Userid: todo.Userid}
 	c.JSON(http.StatusOK, gin.H{"status": http.StatusOK, "data": _todo})
 }
 
